@@ -1,4 +1,4 @@
-package com.qlkh.doanplq.qlkh.materiallogin;
+package com.qlkh.doanplq.qlkh.materiallogin.Activity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;

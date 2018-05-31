@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    tools:context=".materiallogin.KhachHangActivity">
+    tools:context=".materiallogin.Activity.KhachHangActivity">
 
     <android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -56,7 +56,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.06"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/et_MaKH" />
+                    app:layout_constraintTop_toBottomOf="@+id/et_MaKH1" />
 
                 <EditText
                     android:id="@+id/et_MaMH"
@@ -66,7 +66,7 @@
                     android:layout_marginTop="8dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="Name"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/tv_MaKH"
                     app:layout_constraintTop_toBottomOf="@+id/tv_MaKH" />
@@ -94,7 +94,7 @@
                     android:layout_marginTop="8dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="Name" />
+                    />
             </LinearLayout>
 
 
@@ -121,7 +121,7 @@
                     android:layout_marginTop="8dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="Name" />
+                    />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -145,7 +145,7 @@
                     android:layout_marginTop="8dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="Name" />
+                    />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -169,7 +169,7 @@
                     android:layout_marginTop="8dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="Name" />
+                  />
             </LinearLayout>
         </LinearLayout>
 

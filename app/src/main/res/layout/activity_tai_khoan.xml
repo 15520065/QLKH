@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    tools:context=".materiallogin.TaiKhoanActivity">
+    tools:context=".materiallogin.Activity.TaiKhoanActivity">
 
     <android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -66,7 +66,7 @@
                     android:layout_marginTop="8dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="Name"
+
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/tv_MaTK"
                     app:layout_constraintTop_toBottomOf="@+id/tv_MaTK" />
@@ -94,7 +94,7 @@
                     android:layout_marginTop="8dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="Name" />
+                     />
             </LinearLayout>
 
 
@@ -121,7 +121,7 @@
                     android:layout_marginTop="8dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="Name" />
+                 />
             </LinearLayout>
         </LinearLayout>
 

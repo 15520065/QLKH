@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".materiallogin.MainActivity">
+        <activity android:name=".materiallogin.Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,18 +22,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".materiallogin.RegisterActivity"
+            android:name=".materiallogin.Activity.RegisterActivity"
             android:theme="@style/Translucent" />
-        <activity android:name=".materiallogin.LoginSuccessActivity" />
-        <activity android:name=".materiallogin.GoiCuocActivity" />
-        <activity android:name=".materiallogin.HoaDonDKActivity" />
-        <activity android:name=".materiallogin.HoaDonThangActivity" />
-        <activity android:name=".materiallogin.TaiKhoanActivity" />
-        <activity android:name=".materiallogin.LanTruyCapActivity" />
-        <activity android:name=".materiallogin.TinhTrangActivity" />
-        <activity android:name=".materiallogin.KhuyenMaiActivity" />
-        <activity android:name=".materiallogin.KhachHangActivity" />
-        <activity android:name=".materiallogin.HopDongDKActivity"></activity>
+        <activity android:name=".materiallogin.Activity.LoginSuccessActivity" />
+        <activity android:name=".materiallogin.Activity.GoiCuocActivity" />
+        <activity android:name=".materiallogin.Activity.HoaDonDKActivity" />
+        <activity android:name=".materiallogin.Activity.HoaDonThangActivity" />
+        <activity android:name=".materiallogin.Activity.TaiKhoanActivity" />
+        <activity android:name=".materiallogin.Activity.LanTruyCapActivity" />
+        <activity android:name=".materiallogin.Activity.TinhTrangActivity" />
+        <activity android:name=".materiallogin.Activity.KhuyenMaiActivity" />
+        <activity android:name=".materiallogin.Activity.KhachHangActivity" />
+        <activity android:name=".materiallogin.Activity.HopDongDKActivity" />
+        <activity android:name=".materiallogin.Activity.QuanLyKhachHang" />
+        <activity android:name=".materiallogin.Activity.UpdateKhachHang" />
+        <activity android:name=".materiallogin.Activity.HopDong"></activity>
     </application>
 
 </manifest>

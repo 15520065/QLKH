@@ -1,4 +1,4 @@
-package com.qlkh.doanplq.qlkh.materiallogin;
+package com.qlkh.doanplq.qlkh.materiallogin.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,7 +26,6 @@ public class HoaDonDKActivity extends AppCompatActivity {
         tv_CuocDK = findViewById(R.id.tv_CuocDK);
         tv_NgayBDSD = findViewById(R.id.tv_NgayBDSD);
         tv_NgayLap = findViewById(R.id.tv_NgayLap);
-
         et_MaHoaDonDK = findViewById(R.id.et_MaHoaDonDK);
         et_CuocDK = findViewById(R.id.et_CuocDK);
         et_NgayBDSD = findViewById(R.id.et_NgayBDSD);

@@ -1,4 +1,4 @@
-package com.qlkh.doanplq.qlkh.materiallogin;
+package com.qlkh.doanplq.qlkh.materiallogin.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

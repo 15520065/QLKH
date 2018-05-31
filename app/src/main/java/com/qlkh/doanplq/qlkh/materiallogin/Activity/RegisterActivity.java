@@ -1,4 +1,4 @@
-package com.qlkh.doanplq.qlkh.materiallogin;
+package com.qlkh.doanplq.qlkh.materiallogin.Activity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
