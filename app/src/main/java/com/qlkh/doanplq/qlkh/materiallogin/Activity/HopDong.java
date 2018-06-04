@@ -29,7 +29,7 @@ public class HopDong extends AppCompatActivity {
         txtsl = findViewById(R.id.txtsltk);
         database = Database.initDatabase(this,DATABASE_NAME);
 
-        Cursor cursor = database.rawQuery("SELECT * FROM KhachHang, HopDongDK WHERE KhachHang.MaKH = HopDong.MaKH", null);
+        Cursor cursor = database.rawQuery("SELECT * FROM KhachHang, HopDongDK WHERE KhachHang.MaKH = HopDongDK.MaKH", null);
         cursor.moveToFirst();
         String TenKH = cursor.getString(1);
         String CMND = cursor.getString(2);
