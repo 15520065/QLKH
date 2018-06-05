@@ -1,24 +1,30 @@
 package com.qlkh.doanplq.qlkh.materiallogin.Activity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.qlkh.doanplq.qlkh.R;
 import com.qlkh.doanplq.qlkh.materiallogin.Database.Database;
+import com.qlkh.doanplq.qlkh.materiallogin.Table.KhachHang;
 
 public class HopDong extends AppCompatActivity {
     final String DATABASE_NAME = "QuanLyKhachHang.sqlite";
     SQLiteDatabase database;
-    TextView txtten, txtcm, txtdiachi, txtnghe, txtdccai, txtdcgui, txtsdt, txtsl;
+    TextView txtten, txtcm, txtdiachi, txtnghe, txtdccai, txtdcgui, txtsdt, txtsl, txtMaHD;
+    Button btnDongTien;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hop_dong);
 
-
+        Intent intent = getIntent();
+        String maKH = intent.getStringExtra("MaKH");
         txtten = findViewById(R.id.txtten);
         txtcm = findViewById(R.id.txtcmnd);
         txtdiachi = findViewById(R.id.txtdiachi);
@@ -27,18 +33,24 @@ public class HopDong extends AppCompatActivity {
         txtdcgui = findViewById(R.id.txtdiachiguihd);
         txtsdt = findViewById(R.id.txtsdt);
         txtsl = findViewById(R.id.txtsltk);
-        database = Database.initDatabase(this,DATABASE_NAME);
+        txtMaHD = findViewById(R.id.txtMaHD);
+        btnDongTien = findViewById(R.id.btnDongTien);
 
-        Cursor cursor = database.rawQuery("SELECT * FROM KhachHang, HopDongDK WHERE KhachHang.MaKH = HopDongDK.MaKH", null);
-        cursor.moveToFirst();
+        database = Database.initDatabase(this,DATABASE_NAME);
+        int a = Integer.parseInt(maKH);
+
+        Cursor cursor = database.rawQuery("SELECT * FROM KhachHang, HopDongDK WHERE KhachHang.MaKH = HopDongDK.MaKH " +
+                "AND HopDongDK.MaKH = "+a+"", null);
+        cursor.moveToLast();
         String TenKH = cursor.getString(1);
         String CMND = cursor.getString(2);
         String DiaChi = cursor.getString(3);
         String NgheNghiep = cursor.getString(4);
-        String DiaChiCaiDat = cursor.getString(5);
-        String DiaChiGuiHopDong = cursor.getString(6);
-        String SDT = cursor.getString(7);
-        String SoLuongTK = cursor.getString(8);
+        final String MaHD = cursor.getString(5);
+        String DiaChiCaiDat = cursor.getString(6);
+        String DiaChiGuiHopDong = cursor.getString(7);
+        String SDT = cursor.getString(8);
+        String SoLuongTK = cursor.getString(9);
 
         txtten.setText(TenKH);
         txtcm.setText(CMND);
@@ -48,7 +60,17 @@ public class HopDong extends AppCompatActivity {
         txtdcgui.setText(DiaChiGuiHopDong);
         txtsdt.setText(SDT);
         txtsl.setText(SoLuongTK);
+        txtMaHD.setText(MaHD);
 
+
+        btnDongTien.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HopDong.this, HoaDonDKActivity.class);
+                intent.putExtra("maHD", MaHD);
+                startActivity(intent);
+            }
+        });
 
 
     }

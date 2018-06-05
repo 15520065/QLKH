@@ -26,18 +26,22 @@ public class HopDongDKActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hop_dong_dk);
         init();
+
+        Intent intent = getIntent();
+        final String maKH = intent.getStringExtra("MaKH");
+        et_MaKH.setText(maKH);
         btn_luu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String MaKH = et_MaKH.getText().toString();
+                //String MaKH = et_MaKH.getText().toString();
                 String DiaChiCaiDat = et_DiaChiCaiDat.getText().toString();
                 String DiaChiGuiHD = et_DiaChiGuiHD.getText().toString();
                 String SDT = et_SDT.getText().toString();
                 String SoLuongTK = et_SoLuongTK.getText().toString();
 
                 ContentValues contentValues = new ContentValues();
-                contentValues.put("MaKH", MaKH);
+                contentValues.put("MaKH", maKH);
                 contentValues.put("DiaChiCaiDat", DiaChiCaiDat);
                 contentValues.put("DiaChiGuiHopDong", DiaChiGuiHD);
                 contentValues.put("SDT", SDT);
@@ -47,6 +51,7 @@ public class HopDongDKActivity extends AppCompatActivity {
                 database.insert("HopDongDK", null, contentValues);
 
                 Intent intent = new Intent(HopDongDKActivity.this, HopDong.class);
+                intent.putExtra("MaKH", maKH);
                 startActivity(intent);
 
 

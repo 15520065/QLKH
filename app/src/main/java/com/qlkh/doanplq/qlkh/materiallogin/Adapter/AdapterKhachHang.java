@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.qlkh.doanplq.qlkh.R;
+import com.qlkh.doanplq.qlkh.materiallogin.Activity.HopDong;
 import com.qlkh.doanplq.qlkh.materiallogin.Activity.HopDongDKActivity;
 import com.qlkh.doanplq.qlkh.materiallogin.Activity.KhachHangActivity;
 import com.qlkh.doanplq.qlkh.materiallogin.Activity.LoginSuccessActivity;
@@ -52,7 +53,7 @@ public class AdapterKhachHang extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View row = inflater.inflate(R.layout.listview_khachhang, null);
-        TextView txtMaKH = (TextView) row.findViewById(R.id.txtMaKH);
+        final TextView txtMaKH = (TextView) row.findViewById(R.id.txtMaKH);
         TextView txtCMND = (TextView) row.findViewById(R.id.txtCMND);
         TextView txtDiaChi = (TextView) row.findViewById(R.id.txtDiaChi);
         TextView txtNgheNghiep = (TextView) row.findViewById(R.id.txtNgheNghiep);
@@ -60,6 +61,7 @@ public class AdapterKhachHang extends BaseAdapter {
         Button btnXoa = (Button) row.findViewById(R.id.btnXoa);
         Button btnSua = (Button) row.findViewById(R.id.btnSua);
         Button btnDK = (Button) row.findViewById(R.id.btnDKHD);
+        Button btnHD = (Button) row.findViewById(R.id.btnHD);
 
 
         final KhachHang khachHang = list.get(position);
@@ -78,6 +80,15 @@ public class AdapterKhachHang extends BaseAdapter {
             }
         });
 
+        btnHD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String b = (String) txtMaKH.getText();
+                Intent intent = new Intent(context, HopDong.class);
+                intent.putExtra("MaKH", b);
+                context.startActivity(intent);
+            }
+        });
         btnXoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +99,9 @@ public class AdapterKhachHang extends BaseAdapter {
         btnDK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String b = (String) txtMaKH.getText();
                 Intent intent = new Intent(context, HopDongDKActivity.class);
+                intent.putExtra("MaKH", b);
                 context.startActivity(intent);
             }
         });

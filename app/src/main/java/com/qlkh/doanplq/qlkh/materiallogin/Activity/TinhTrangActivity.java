@@ -6,7 +6,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.qlkh.doanplq.qlkh.R;
-import org.w3c.dom.Text;
 
 public class TinhTrangActivity extends AppCompatActivity {
 
@@ -24,7 +23,7 @@ public class TinhTrangActivity extends AppCompatActivity {
         tv_MaTinhTrang = findViewById(R.id.tv_MaTinhTrang);
         tv_TenTinhTrang = findViewById(R.id.tv_TenTinhTrang);
 
-        et_MaTinhTrang = findViewById(R.id.et_MaTinhTrang);
+        et_MaTinhTrang = findViewById(R.id.et_phidk);
         et_TenTinhTrang = findViewById(R.id.et_TenTinhTrang);
 
         btn_luu=findViewById(R.id.btn_luu);

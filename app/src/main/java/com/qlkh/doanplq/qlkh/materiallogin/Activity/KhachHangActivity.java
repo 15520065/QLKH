@@ -2,6 +2,7 @@ package com.qlkh.doanplq.qlkh.materiallogin.Activity;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,7 +50,10 @@ public class KhachHangActivity extends AppCompatActivity {
 //                contentValues.put("SoLuongTK", SoLuongTK);
                 database = Database.initDatabase(KhachHangActivity.this, DATABASE_NAME);
                 database.insert("KHACHHANG", null, contentValues);
+
+
                 Intent intent = new Intent(KhachHangActivity.this, LoginSuccessActivity.class);
+
                 startActivity(intent);
 
 
