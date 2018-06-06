@@ -131,7 +131,7 @@ public class InHoaDonDK extends AppCompatActivity {
 //            }
 //        });
 
-        rccv_tk.setAdapter(adapter);
+        //rccv_tk.setAdapter(adapter);
 
     }
 }

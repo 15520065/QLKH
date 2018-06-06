@@ -41,7 +41,7 @@ public class HopDongDKActivity extends AppCompatActivity {
                 String SoLuongTK = et_SoLuongTK.getText().toString();
 
                 ContentValues contentValues = new ContentValues();
-                contentValues.put("MaHoaDonDK", maKH);
+                contentValues.put("MaKH", maKH);
                 contentValues.put("DiaChiCaiDat", DiaChiCaiDat);
                 contentValues.put("DiaChiGuiHopDong", DiaChiGuiHD);
                 contentValues.put("SDT", SDT);
@@ -49,7 +49,6 @@ public class HopDongDKActivity extends AppCompatActivity {
 
                 database = Database.initDatabase(HopDongDKActivity.this, DATABASE_NAME);
                 database.insert("HopDongDK", null, contentValues);
-
                 Intent intent = new Intent(HopDongDKActivity.this, HopDong.class);
                 intent.putExtra("MaKH", maKH);
                 startActivity(intent);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,66 +9,102 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:gravity="center"
-    tools:context=".materiallogin.Activity.LoginSuccessActivity">
+    android:background="@drawable/bg"
+    tools:context=".materiallogin.Activity.LoginSuccessActivity"
+    >
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <Button
+
+        <Button
         android:id="@+id/btnGoiCuoc"
-        android:layout_width="wrap_content"
-        android:layout_height="49dp"
+        android:layout_width="0dp"
+        android:layout_height="108dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Goi Cuoc"
+        android:layout_marginTop="4dp"
+        android:text="Gói Cước"
+        android:textSize="25sp"
+        android:background="#75e5f6"
+        android:textColor="#ffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnKhachHang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Khach Hang"
+        android:text="Khách Hàng"
+        android:textColor="#ffff"
+        android:background="#5599ff"
+
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnGoiCuoc" />
 
-    <Button
+
+
+        <Button
         android:id="@+id/btnKhuyenMai"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Khuyen Mai"
+        android:text="Khuyến Mãi"
+        android:textColor="#ffff"
+        android:background="#75baf6"
+
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnKhachHang" />
 
     <Button
         android:id="@+id/btnTinhTrang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Tinh Trang"
+        android:textColor="#ffff"
+        android:background="#7591f6"
+
+        android:text="Tình trạng"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnKhuyenMai" />
 
-    <Button
-        android:id="@+id/btn_Demo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Demo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnTinhTrang" />
+        <Button
+            android:id="@+id/btn_Demo"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="32dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Demo"
+            android:textColor="#ffff"
+            android:background="#cb97ff"
 
-</android.support.constraint.ConstraintLayout>
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnTinhTrang" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</ScrollView>
