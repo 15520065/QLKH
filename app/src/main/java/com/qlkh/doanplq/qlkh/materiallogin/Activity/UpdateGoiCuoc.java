@@ -58,7 +58,6 @@ public class UpdateGoiCuoc extends AppCompatActivity {
     }
 
     private void addControls() {
-        et_MaKH = findViewById(R.id.et_MaGC);
         et_TenKH = findViewById(R.id.et_TenGC);
         et_CMND = findViewById(R.id.et_CuocTB1);
         et_DiaChi = findViewById(R.id.et_GiaCD);

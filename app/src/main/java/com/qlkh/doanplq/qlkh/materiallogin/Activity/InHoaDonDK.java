@@ -5,17 +5,28 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.qlkh.doanplq.qlkh.R;
 import com.qlkh.doanplq.qlkh.materiallogin.Database.Database;
+import com.qlkh.doanplq.qlkh.materiallogin.Table.GoiCuoc;
+import com.qlkh.doanplq.qlkh.materiallogin.Table.TaiKhoan;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class InHoaDonDK extends AppCompatActivity {
     final String DATABASE_NAME = "QuanLyKhachHang.sqlite";
     SQLiteDatabase database;
-    TextView txtTen, txtCMND, txtDCCD, txtDCTT, txtChiPhi, txtBD, txtTaiKhoan, txtMK, txtMail;
-    EditText editText;
+    TextView txtTen, txtCMND, txtDCCD, txtDCTT, txtChiPhi, txtBD;
+
+    private RecyclerView rccv_tk;
+    int soLuongTK;
+    int maKH;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,16 +38,12 @@ public class InHoaDonDK extends AppCompatActivity {
         int a = Integer.parseInt(MaHD);
         int b = Integer.parseInt(MaKH);
 
-        editText = findViewById(R.id.et_MaGC);
         txtTen = findViewById(R.id.txtTenKH);
         txtCMND = findViewById(R.id.txtCMND);
         txtDCCD = findViewById(R.id.txtDiaChiCD);
         txtDCTT = findViewById(R.id.txtDCGuiTT);
         txtChiPhi = findViewById(R.id.txtChiPhi);
-        txtTaiKhoan = findViewById(R.id.txtTenTK);
         txtBD = findViewById(R.id.txtNgayBD);
-        txtMK = findViewById(R.id.txtMatKhau);
-        txtMail = findViewById(R.id.txtMail);
 
         database = Database.initDatabase(this,DATABASE_NAME);
         Cursor cursor = database.rawQuery("SELECT * FROM KhachHang, HopDongDK WHERE KhachHang.MaKH = HopDongDK.MaKH " +
@@ -62,13 +69,69 @@ public class InHoaDonDK extends AppCompatActivity {
 
 
 
+//        if (savedInstanceState == null) {
+//            Bundle extras = getIntent().getExtras();
+//            if (extras == null) {
+//                soLuongTK = 0;
+//                maKH = 0;
+//            } else {
+//                soLuongTK = extras.getInt("SoLuongTK");
+//            }
+//        } else {
+//            soLuongTK = (Integer) savedInstanceState.getInt("SoLuongTK");
+//        }
+//
+//        initRecyclerView();
+//        refreshList();
+    }
 
+    private void initRecyclerView() {
+        rccv_tk = findViewById(R.id.rccv_tk);
+        LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        rccv_tk.setLayoutManager(llm);
+    }
 
+    public List<TaiKhoan> getDSTK() {
+        List<GoiCuoc> dsGoiCuoc = GoiCuoc.getDB(this);
+        List<TaiKhoan> dsTk = new LinkedList<>();
 
+        if (dsGoiCuoc.size() == 0) {
+            Toast.makeText(getApplicationContext(), "Chưa có gói cước mặc định!", Toast.LENGTH_LONG);
+            finish();
+        }
 
+        for (int i = 0; i < soLuongTK; i++) {
+            TaiKhoan taiKhoan = TaiKhoan.Builder.aTaiKhoan()
+                    .setMaKH(maKH)
+                    .setMaGoiCuoc(dsGoiCuoc.get(0).MaGoiCuoc)
+                    .setMaKH(123)
+                    .build();
 
+            dsTk.add(taiKhoan);
+        }
 
+        TaiKhoan.insertDS(this,dsTk);
 
+        return TaiKhoan.getDB(this, "SELECT * FROM KhachHang WHERE MaKH = " + maKH + "" );
+    }
+
+    private void refreshList() {
+
+        List<GoiCuoc> dsGoiCuoc = GoiCuoc.getDB(this);
+        List<TaiKhoan> dsTk = getDSTK();
+
+        TKAdapter adapter = new TKAdapter(dsTk, dsGoiCuoc);
+//        adapter.setOnItemChildClickListener((adapter1, view, position) -> {
+//            if (view.getId() == R.id.iv_menu) {
+//                showTopRightMenuItem(position, view);
+//            }
+//            if (view.getId() == R.id.btn_request_state) {
+//                btnRequestStateClick(position);
+//            }
+//        });
+
+        rccv_tk.setAdapter(adapter);
 
     }
 }

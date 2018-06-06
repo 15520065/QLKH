@@ -41,7 +41,7 @@ public class HopDongDKActivity extends AppCompatActivity {
                 String SoLuongTK = et_SoLuongTK.getText().toString();
 
                 ContentValues contentValues = new ContentValues();
-                contentValues.put("MaKH", maKH);
+                contentValues.put("MaHoaDonDK", maKH);
                 contentValues.put("DiaChiCaiDat", DiaChiCaiDat);
                 contentValues.put("DiaChiGuiHopDong", DiaChiGuiHD);
                 contentValues.put("SDT", SDT);

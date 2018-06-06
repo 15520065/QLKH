@@ -19,7 +19,7 @@ public class HopDong extends AppCompatActivity {
     TextView txtten, txtcm, txtdiachi, txtnghe, txtdccai, txtdcgui, txtsdt, txtsl, txtMaHD;
     Button btnDongTien;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hop_dong);
 
@@ -50,7 +50,7 @@ public class HopDong extends AppCompatActivity {
         String DiaChiCaiDat = cursor.getString(7);
         String DiaChiGuiHopDong = cursor.getString(8);
         String SDT = cursor.getString(9);
-        String SoLuongTK = cursor.getString(10);
+        final String SoLuongTK = cursor.getString(10);
 
         txtten.setText("Tên: " + TenKH);
         txtcm.setText("Số CMND: "+CMND);
@@ -69,6 +69,7 @@ public class HopDong extends AppCompatActivity {
                 Intent intent = new Intent(HopDong.this, HoaDonDKActivity.class);
                 intent.putExtra("maHD", MaHD);
                 intent.putExtra("maKH", maKH);
+                intent.putExtra("SoLuongTK", SoLuongTK);
                 startActivity(intent);
             }
         });
