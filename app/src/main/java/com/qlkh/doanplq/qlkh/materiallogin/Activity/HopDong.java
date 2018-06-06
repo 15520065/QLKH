@@ -59,7 +59,7 @@ public class HopDong extends AppCompatActivity {
         txtdccai.setText("Địa chỉ cài đặt: "+DiaChiCaiDat);
         txtdcgui.setText("Địa chỉ gửi HD: "+DiaChiGuiHopDong);
         txtsdt.setText("Số điện thoại: "+SDT);
-        txtsl.setText("Số lượng tài khoản: "+SoLuongTK);
+        txtsl.setText("Số lượng tài khoản: "+ SoLuongTK);
         txtMaHD.setText("Mã hợp đồng: "+MaHD);
 
 
