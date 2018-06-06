@@ -11,14 +11,19 @@ import android.transition.Explode;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
 import com.qlkh.doanplq.qlkh.R;
+import com.qlkh.doanplq.qlkh.materiallogin.Table.TaiKhoan;
+
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText etUsername;
-    private EditText etPassword;
-    private Button btGo;
+    private EditText et_Email;
+    private EditText et_MatKhau;
+    private Button bt_DangNhap;
     private CardView cv;
     private FloatingActionButton fab;
 
@@ -31,34 +36,38 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        etUsername = findViewById(R.id.et_username);
-        etPassword = findViewById(R.id.et_password);
-        btGo = findViewById(R.id.bt_go);
+        et_Email = findViewById(R.id.et_Email);
+        et_MatKhau = findViewById(R.id.et_MatKhau);
+        bt_DangNhap = findViewById(R.id.bt_DangNhap);
         cv = findViewById(R.id.cv);
         fab = findViewById(R.id.fab);
     }
 
     private void setListener() {
-        btGo.setOnClickListener(new View.OnClickListener() {
+        bt_DangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Explode explode = new Explode();
-                explode.setDuration(500);
+                List<TaiKhoan> taiKhoanList = TaiKhoan.getDB(MainActivity.this, "SELECT * FROM TaiKhoan)");
 
-                getWindow().setExitTransition(explode);
-                getWindow().setEnterTransition(explode);
-                ActivityOptionsCompat oc2 = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this);
-                Intent i2 = new Intent(MainActivity.this,LoginSuccessActivity.class);
-                startActivity(i2, oc2.toBundle());
+                for (TaiKhoan taiKhoan :
+                        taiKhoanList) {
+                    if (et_Email.getText().toString().equals(taiKhoan.getEmail())
+                            && et_MatKhau.getText().toString().equals(taiKhoan.getMatKhau())) {
+
+                        Intent i = new Intent(MainActivity.this,LoginSuccessActivity.class);
+                        i.putExtra("taiKhoan", taiKhoan);
+                        startActivity(i);
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(), "Sai Email hoặc mật khẩu!", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getWindow().setExitTransition(null);
-                getWindow().setEnterTransition(null);
-                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, fab, fab.getTransitionName());
-                startActivity(new Intent(MainActivity.this, RegisterActivity.class), options.toBundle());
+                finish();
             }
         });
     }

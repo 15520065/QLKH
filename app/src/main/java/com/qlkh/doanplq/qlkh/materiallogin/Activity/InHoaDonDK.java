@@ -109,7 +109,7 @@ public class InHoaDonDK extends AppCompatActivity {
             TaiKhoan taiKhoan = TaiKhoan.Builder.aTaiKhoan()
                     .setMaKH(maKH)
                     .setMaGoiCuoc(dsGoiCuoc.get(0).MaGoiCuoc)
-                    .setMaTK(123)
+                    .setMatKhau("123456")
                     .build();
 
             dsTk.add(taiKhoan);
@@ -135,7 +135,7 @@ public class InHoaDonDK extends AppCompatActivity {
 //            }
 //        });
 
-        //rccv_tk.setAdapter(adapter);
+        rccv_tk.setAdapter(adapter);
 
         findViewById(R.id.btn_luu).setOnClickListener(new View.OnClickListener() {
             @Override

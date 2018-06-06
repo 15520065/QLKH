@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.qlkh.doanplq.qlkh.materiallogin.Activity.HopDongDKActivity;
 import com.qlkh.doanplq.qlkh.materiallogin.Database.Database;
@@ -11,12 +13,12 @@ import com.qlkh.doanplq.qlkh.materiallogin.Database.Database;
 import java.util.LinkedList;
 import java.util.List;
 
-public class TaiKhoan {
+public class TaiKhoan implements Parcelable {
     private int MaTK;
     private int MaKH;
     private int MaGoiCuoc;
     private String Email;
-    private int MatKhau;
+    private String MatKhau;
 
     final static String DATABASE_NAME = "QuanLyKhachHang.sqlite";
 
@@ -62,7 +64,7 @@ public class TaiKhoan {
             int MaKH = cursor.getInt(1);
             int MaGoiCuoc = cursor.getInt(2);
             String Email = cursor.getString(3);
-            int MatKhau = cursor.getInt(4);
+            String MatKhau = cursor.getString(4);
 
             list.add(new TaiKhoan(MaTK, MaKH, MaGoiCuoc, Email, MatKhau));
         }
@@ -70,7 +72,7 @@ public class TaiKhoan {
         return list;
     }
 
-    public TaiKhoan(int maTK, int maKH, int maGoiCuoc, String email, int matKhau) {
+    public TaiKhoan(int maTK, int maKH, int maGoiCuoc, String email, String matKhau) {
         MaTK = maTK;
         MaKH = maKH;
         MaGoiCuoc = maGoiCuoc;
@@ -110,11 +112,11 @@ public class TaiKhoan {
         Email = email;
     }
 
-    public int getMatKhau() {
+    public String getMatKhau() {
         return MatKhau;
     }
 
-    public void setMatKhau(int matKhau) {
+    public void setMatKhau(String matKhau) {
         MatKhau = matKhau;
     }
 
@@ -124,7 +126,7 @@ public class TaiKhoan {
         private int MaKH;
         private int MaGoiCuoc;
         private String Email;
-        private int MatKhau;
+        private String MatKhau;
 
         private Builder() {
         }
@@ -153,13 +155,13 @@ public class TaiKhoan {
             return this;
         }
 
-        public Builder setMatKhau(int MatKhau) {
+        public Builder setMatKhau(String MatKhau) {
             this.MatKhau = MatKhau;
             return this;
         }
 
         public TaiKhoan build() {
-            TaiKhoan taiKhoan = new TaiKhoan(0, 0, 0, null, 0);
+            TaiKhoan taiKhoan = new TaiKhoan(0, 0, 0, null, null);
             taiKhoan.setMaTK(MaTK);
             taiKhoan.setMaKH(MaKH);
             taiKhoan.setMaGoiCuoc(MaGoiCuoc);
@@ -168,4 +170,39 @@ public class TaiKhoan {
             return taiKhoan;
         }
     }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.MaTK);
+        dest.writeInt(this.MaKH);
+        dest.writeInt(this.MaGoiCuoc);
+        dest.writeString(this.Email);
+        dest.writeString(this.MatKhau);
+    }
+
+    protected TaiKhoan(Parcel in) {
+        this.MaTK = in.readInt();
+        this.MaKH = in.readInt();
+        this.MaGoiCuoc = in.readInt();
+        this.Email = in.readString();
+        this.MatKhau = in.readString();
+    }
+
+    public static final Parcelable.Creator<TaiKhoan> CREATOR = new Parcelable.Creator<TaiKhoan>() {
+        @Override
+        public TaiKhoan createFromParcel(Parcel source) {
+            return new TaiKhoan(source);
+        }
+
+        @Override
+        public TaiKhoan[] newArray(int size) {
+            return new TaiKhoan[size];
+        }
+    };
 }
