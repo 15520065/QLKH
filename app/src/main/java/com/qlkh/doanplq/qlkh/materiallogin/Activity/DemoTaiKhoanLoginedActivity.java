@@ -1,6 +1,7 @@
 package com.qlkh.doanplq.qlkh.materiallogin.Activity;
 
 import android.support.annotation.NonNull;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -12,9 +13,13 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.qlkh.doanplq.qlkh.R;
+import com.qlkh.doanplq.qlkh.materiallogin.Table.LanTruyCap;
 import com.qlkh.doanplq.qlkh.materiallogin.Table.TaiKhoan;
 import com.qlkh.doanplq.qlkh.materiallogin.TimeUtils;
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
@@ -104,6 +109,65 @@ public class DemoTaiKhoanLoginedActivity extends AppCompatActivity {
                 ngayKT = TimeUtils.getCurrentTimeAsDate();
 
 
+            }
+        });
+    }
+
+    Calendar selectedDateTime;
+    DatePickerDialog datePickerDialog;
+    TimePickerDialog timePickerDialog;
+
+    private void initDateTimePicker() {
+        selectedDateTime = Calendar.getInstance();
+
+        // Date
+        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+                selectedDateTime.set(year,monthOfYear,dayOfMonth);
+
+                // start time picker
+                if(timePickerDialog.isAdded())
+                    return;
+
+                timePickerDialog.show(getFragmentManager(),"timePickerDialog");
+            }
+        };
+
+
+        datePickerDialog = DatePickerDialog.newInstance(dateSetListener, Calendar.getInstance());
+        datePickerDialog.setVersion(DatePickerDialog.Version.VERSION_2);
+        datePickerDialog.setAccentColor(ResourcesCompat.getColor(getResources(), R.color.title_bar_background_color_blue, null));
+
+        // Time
+        TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
+                selectedDateTime.set(Calendar.HOUR_OF_DAY,hourOfDay);
+                selectedDateTime.set(Calendar.MINUTE,minute);
+                selectedDateTime.set(Calendar.SECOND,0);
+                selectedDateTime.set(Calendar.MILLISECOND,0);
+
+                // out va luu thong tin lan truy cap
+                LanTruyCap lanTruyCap = LanTruyCap.Builder.aLanTruyCap()
+                        .setMaTK(taiKhoan.getMaTK())
+                        .setThoiGianBD(ngayBD)
+                        .setThoiGianKT(selectedDateTime.getTime())
+                        .build();
+            }
+        };
+
+        timePickerDialog = TimePickerDialog.newInstance(timeSetListener, true);
+        timePickerDialog.setAccentColor(ResourcesCompat.getColor(getResources(), R.color.title_bar_background_color_blue, null));
+
+
+        btn_DangXuat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(datePickerDialog.isAdded())
+                    return;
+
+                datePickerDialog.show(getFragmentManager(),"datePickerDialog");
             }
         });
     }

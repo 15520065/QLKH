@@ -2,6 +2,7 @@ package com.qlkh.doanplq.qlkh.materiallogin;
 
 import android.annotation.SuppressLint;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -16,6 +17,23 @@ public class TimeUtils {
     public static final SimpleDateFormat userTimeFormat = new SimpleDateFormat("HH:mm");
     public static final SimpleDateFormat userDateTimeFormat = new SimpleDateFormat("EEEE dd MMMM, HH:mm");
 
+    public static final SimpleDateFormat systemDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+
+    public static Date strToSystemDate(String string) {
+        Calendar cal = Calendar.getInstance();
+        try {
+            cal.setTime(systemDateFormat.parse(string));
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return cal.getTime();
+    }
+
+    public static String dateToStrSysTem(Date date) {
+        return systemDateFormat.format(date);
+    }
 
     public static String getCurrentTimeAsString() {
         Calendar c = Calendar.getInstance();
@@ -119,5 +137,4 @@ public class TimeUtils {
             return true;
         return false;
     }
-
 }
