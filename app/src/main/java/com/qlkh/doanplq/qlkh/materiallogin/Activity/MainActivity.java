@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 List<TaiKhoan> taiKhoanList = TaiKhoan.getDB(MainActivity.this, "SELECT * FROM TaiKhoan");
 
+                boolean fail = true;
                 for (TaiKhoan taiKhoan :
                         taiKhoanList) {
                     if (et_Email.getText().toString().equals(taiKhoan.getEmail())
@@ -57,9 +58,12 @@ public class MainActivity extends AppCompatActivity {
                         Intent i = new Intent(MainActivity.this, DemoTaiKhoanLoginedActivity.class);
                         i.putExtra("taiKhoan", taiKhoan);
                         startActivity(i);
+                        fail = false;
                     }
                 }
-                Toast.makeText(getApplicationContext(), "Sai Email hoặc mật khẩu!", Toast.LENGTH_SHORT).show();
+                if (fail) {
+                    Toast.makeText(getApplicationContext(), "Sai Email hoặc mật khẩu!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         fab.setOnClickListener(new View.OnClickListener() {

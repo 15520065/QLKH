@@ -32,9 +32,9 @@ public class LanTruyCap {
             SQLiteDatabase database = Database.initDatabase(activity, DATABASE_NAME);
 
             ContentValues contentValues = new ContentValues();
-            contentValues.put("MaTK", String.valueOf(item.getMaTK()));
             contentValues.put("ThoiGianBD", TimeUtils.dateToStrSysTem(item.getThoiGianBD()));
             contentValues.put("ThoiGianKT", TimeUtils.dateToStrSysTem(item.getThoiGianKT()));
+            contentValues.put("MaTK", item.getMaTK());
 
             database.insert("LanTruyCap", null, contentValues);
         }
@@ -51,11 +51,11 @@ public class LanTruyCap {
         {
             cursor.moveToPosition(i);
             int MaLanTruyCap = cursor.getInt(0);
-            int ThoiGianBD = cursor.getInt(1);
+            Date ThoiGianBD =  TimeUtils.strToSystemDate(cursor.getString(1));
             Date ThoiGianKT = TimeUtils.strToSystemDate(cursor.getString(2));
-            Date MaTK = TimeUtils.strToSystemDate(cursor.getString(3));
+            int MaTK = cursor.getInt(3);
 
-            list.add(new LanTruyCap(MaLanTruyCap, ThoiGianBD, ThoiGianKT, MaTK));
+            list.add(new LanTruyCap(MaLanTruyCap,MaTK, ThoiGianBD, ThoiGianKT ));
         }
 
         return list;

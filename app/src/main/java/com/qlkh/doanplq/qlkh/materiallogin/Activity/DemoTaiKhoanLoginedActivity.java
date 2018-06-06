@@ -70,13 +70,13 @@ public class DemoTaiKhoanLoginedActivity extends AppCompatActivity {
 
         tv_MaTK.setText("Mã tài khoản: " + taiKhoan.getMaTK());
         tv_Email.setText("Email: " + taiKhoan.getEmail());
-        tv_ThoiGianBD.setText("Thời gian đăng nhập: " + TimeUtils.curTimeToUserTimeStr());
+        tv_ThoiGianBD.setText("Thời gian đăng nhập: " + TimeUtils.getCurrentTimeAsString());
         ngayBD = TimeUtils.getCurrentTimeAsDate();
 
         btn_DoiMatKhau.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new MaterialDialog.Builder(getApplicationContext())
+                new MaterialDialog.Builder(DemoTaiKhoanLoginedActivity.this)
                         .title("Mật khẩu mới")
                         .inputType(InputType.TYPE_TEXT_VARIATION_PASSWORD)
                         .input("******", null, new MaterialDialog.InputCallback() {
@@ -103,14 +103,7 @@ public class DemoTaiKhoanLoginedActivity extends AppCompatActivity {
             }
         });
 
-        btn_DangXuat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ngayKT = TimeUtils.getCurrentTimeAsDate();
-
-
-            }
-        });
+        initDateTimePicker();
     }
 
     Calendar selectedDateTime;
@@ -154,6 +147,16 @@ public class DemoTaiKhoanLoginedActivity extends AppCompatActivity {
                         .setThoiGianBD(ngayBD)
                         .setThoiGianKT(selectedDateTime.getTime())
                         .build();
+
+                List<LanTruyCap> list = new LinkedList<>();
+                list.add(lanTruyCap);
+
+                LanTruyCap.insertDS(DemoTaiKhoanLoginedActivity.this, list);
+
+
+                // dùng code này lấy ds, chứ k coi đc trên sqlite
+                List<LanTruyCap> dsLanTruyCapCuaTK = LanTruyCap.getDB(DemoTaiKhoanLoginedActivity.this, "SELECT * FROM LanTruyCap WHERE MaTK = " + maTK);
+                dsLanTruyCapCuaTK.size();
             }
         };
 
