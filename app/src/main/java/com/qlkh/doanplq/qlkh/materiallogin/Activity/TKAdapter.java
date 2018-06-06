@@ -23,13 +23,13 @@ public class TKAdapter extends BaseQuickAdapter<TaiKhoan, BaseViewHolder> {
 
     @Override
     protected void convert(BaseViewHolder helper, TaiKhoan item) {
-        helper.setText(R.id.txt_MaTK, item.getMaTK())
+        helper.setText(R.id.txt_MaTK, String.valueOf(item.getMaTK()))
                 .setText(R.id.txt_Email, item.getEmail())
-                .setText(R.id.txt_MK, item.getMaTK());
+                .setText(R.id.txt_MK, String.valueOf(item.getMaTK()));
 
         String maGoiCuocArr[] = new String[goiCuocList.size()];
         for (int i = 0; i < goiCuocList.size(); i++) {
-            maGoiCuocArr[i] = String.valueOf(goiCuocList.get(i));
+            maGoiCuocArr[i] = String.valueOf(String.valueOf(goiCuocList.get(i).MaGoiCuoc));
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(mContext

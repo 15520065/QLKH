@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +38,7 @@ public class InHoaDonDK extends AppCompatActivity {
         final String MaKH = intent.getStringExtra("maKH");
         int a = Integer.parseInt(MaHD);
         int b = Integer.parseInt(MaKH);
+        maKH = b;
 
         txtTen = findViewById(R.id.txtTenKH);
         txtCMND = findViewById(R.id.txtCMND);
@@ -68,21 +70,23 @@ public class InHoaDonDK extends AppCompatActivity {
         txtBD.setText(NgayBDSD);
 
 
+        String soLuongTKStr;
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if (extras == null) {
+                soLuongTKStr = null;
+                finish();
+            } else {
+                soLuongTKStr = extras.getString("SoLuongTK");
+            }
+        } else {
+            soLuongTKStr = (String) savedInstanceState.getString("SoLuongTK");
+        }
+        soLuongTK = Integer.parseInt(soLuongTKStr);
 
-//        if (savedInstanceState == null) {
-//            Bundle extras = getIntent().getExtras();
-//            if (extras == null) {
-//                soLuongTK = 0;
-//                maKH = 0;
-//            } else {
-//                soLuongTK = extras.getInt("SoLuongTK");
-//            }
-//        } else {
-//            soLuongTK = (Integer) savedInstanceState.getInt("SoLuongTK");
-//        }
-//
-//        initRecyclerView();
-//        refreshList();
+        initRecyclerView();
+        refreshList();
+
     }
 
     private void initRecyclerView() {
@@ -105,7 +109,7 @@ public class InHoaDonDK extends AppCompatActivity {
             TaiKhoan taiKhoan = TaiKhoan.Builder.aTaiKhoan()
                     .setMaKH(maKH)
                     .setMaGoiCuoc(dsGoiCuoc.get(0).MaGoiCuoc)
-                    .setMaKH(123)
+                    .setMaTK(123)
                     .build();
 
             dsTk.add(taiKhoan);
@@ -113,13 +117,13 @@ public class InHoaDonDK extends AppCompatActivity {
 
         TaiKhoan.insertDS(this,dsTk);
 
-        return TaiKhoan.getDB(this, "SELECT * FROM KhachHang WHERE MaKH = " + maKH + "" );
+        return TaiKhoan.getDB(this, "SELECT * FROM TaiKhoan WHERE MaKH = " + maKH );
     }
 
     private void refreshList() {
 
         List<GoiCuoc> dsGoiCuoc = GoiCuoc.getDB(this);
-        List<TaiKhoan> dsTk = getDSTK();
+        final List<TaiKhoan> dsTk = getDSTK();
 
         TKAdapter adapter = new TKAdapter(dsTk, dsGoiCuoc);
 //        adapter.setOnItemChildClickListener((adapter1, view, position) -> {
@@ -133,5 +137,13 @@ public class InHoaDonDK extends AppCompatActivity {
 
         rccv_tk.setAdapter(adapter);
 
+        findViewById(R.id.btn_luu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TaiKhoan.updateDS(InHoaDonDK.this, dsTk);
+
+
+            }
+        });
     }
 }

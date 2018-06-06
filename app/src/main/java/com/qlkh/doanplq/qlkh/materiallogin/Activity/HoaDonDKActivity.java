@@ -38,11 +38,6 @@ public class HoaDonDKActivity extends AppCompatActivity {
         final String ngayBD = df.format(Calendar.getInstance().getTime());
         final String ngayLap = df.format(Calendar.getInstance().getTime());
 
-
-
-
-
-
         et_NgayBDSD.setText(ngayBD);
         et_NgayLap.setText(ngayLap);
 
@@ -52,6 +47,7 @@ public class HoaDonDKActivity extends AppCompatActivity {
         Intent intent = getIntent();
         final String MaHD = intent.getStringExtra("maHD");
         final String MaKH = intent.getStringExtra("maKH");
+        final String SoLuongTK = intent.getStringExtra("SoLuongTK");
 
         btn_luu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +68,7 @@ public class HoaDonDKActivity extends AppCompatActivity {
                 Intent intent = new Intent(HoaDonDKActivity.this, InHoaDonDK.class);
                 intent.putExtra("maHD", MaHD);
                 intent.putExtra("maKH", MaKH);
+                intent.putExtra("SoLuongTK",SoLuongTK );
                 startActivity(intent);
 
 

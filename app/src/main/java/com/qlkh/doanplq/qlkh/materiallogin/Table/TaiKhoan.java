@@ -33,6 +33,21 @@ public class TaiKhoan {
         }
     }
 
+    public static void updateDS(Activity activity, List<TaiKhoan> dsTK) {
+        for (TaiKhoan tk : dsTK) {
+            SQLiteDatabase database = Database.initDatabase(activity, DATABASE_NAME);
+
+            ContentValues contentValues = new ContentValues();
+            contentValues.put("MaKH", tk.getMaKH());
+            contentValues.put("MaGoiCuoc", tk.getMaGoiCuoc());
+            contentValues.put("Email", tk.getEmail());
+            contentValues.put("MatKhau", tk.getMatKhau());
+
+            database.update("TaiKhoan", contentValues, "MaTK = ?", new String[]{tk.getMaKH() + ""});
+
+        }
+    }
+
     public static List<TaiKhoan> getDB(Activity activity, String query) {
         List<TaiKhoan> list = new LinkedList<>();
 
