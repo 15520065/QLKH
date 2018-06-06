@@ -39,6 +39,8 @@
         <activity android:name=".materiallogin.Activity.HopDong" />
         <activity android:name=".materiallogin.Activity.ThamSo" />
         <activity android:name=".materiallogin.Activity.InHoaDonDK" />
+        <activity android:name=".materiallogin.Activity.UpdateGoiCuoc" />
+
         <activity android:name=".materiallogin.Activity.QuanLyGoiCuoc"></activity>
     </application>
 

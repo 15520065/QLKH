@@ -1,6 +1,10 @@
 package com.qlkh.doanplq.qlkh.materiallogin.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +13,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.qlkh.doanplq.qlkh.R;
+import com.qlkh.doanplq.qlkh.materiallogin.Activity.UpdateGoiCuoc;
+import com.qlkh.doanplq.qlkh.materiallogin.Activity.UpdateKhachHang;
+import com.qlkh.doanplq.qlkh.materiallogin.Database.Database;
 import com.qlkh.doanplq.qlkh.materiallogin.Table.GoiCuoc;
 import com.qlkh.doanplq.qlkh.materiallogin.Table.KhachHang;
 
@@ -49,6 +56,9 @@ public class AdapterGoiCuoc extends BaseAdapter {
         TextView txtGiaCN = (TextView) row.findViewById(R.id.txtGiaCN);
         TextView txtGiaCD = (TextView) row.findViewById(R.id.txtGiaCD);
 
+        Button btnXoa = (Button) row.findViewById(R.id.buttonXoa);
+        Button btnSua = (Button) row.findViewById(R.id.buttonSua);
+
 
 
 
@@ -59,6 +69,39 @@ public class AdapterGoiCuoc extends BaseAdapter {
         txtMaGC.setText(goiCuoc.MaGoiCuoc +"");
         txtGiaCN.setText(goiCuoc.GiaCuocNgay+"");
         txtGiaCD.setText(goiCuoc.GiaCuocDem+"");
+
+
+        btnSua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (context, UpdateGoiCuoc.class);
+                intent.putExtra("maGoiCuoc", goiCuoc.MaGoiCuoc);
+                context.startActivity(intent);
+            }
+        });
+        btnXoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                delete(goiCuoc.MaGoiCuoc);
+            }
+        });
+
+
         return row;
+    }
+    private void delete(int maGoiCuoc) {
+        SQLiteDatabase database = Database.initDatabase((Activity) context,"QuanLyKhachHang.sqlite" );
+        database.delete("GoiCuoc", "MaGoiCuoc = ?", new String[]{maGoiCuoc + ""});
+        list.clear();
+        Cursor cursor = database.rawQuery("SELECT * FROM GoiCuoc", null);
+        while (cursor.moveToNext()){
+            int id = cursor.getInt(0);
+            String tenKH = cursor.getString(1);
+            int CMND = cursor.getInt(2);
+            int DiaChi = cursor.getInt(3);
+            int NgheNghiep = cursor.getInt(4);
+            list.add(new GoiCuoc(id, tenKH, CMND, DiaChi, NgheNghiep));
+        }
+        notifyDataSetChanged();
     }
 }
