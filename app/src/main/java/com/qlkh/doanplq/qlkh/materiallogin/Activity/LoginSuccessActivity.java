@@ -16,7 +16,7 @@ import com.qlkh.doanplq.qlkh.materiallogin.Table.KhachHang;
 
 public class LoginSuccessActivity extends AppCompatActivity {
 
-    Button btnHopDongDK, btnGoiCuoc, btnHoaDonDK, btnHoaDonThang, btnKhachHang, btnKhuyenMai, btnLanTruyCap, btnTaiKhoan, btnTinhTrang;
+    Button btnGoiCuoc, btnKhachHang, btnKhuyenMai, btnTinhTrang, btnDemo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +24,10 @@ public class LoginSuccessActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login_success);
 
         btnGoiCuoc = findViewById(R.id.btnGoiCuoc);
-        btnHoaDonDK = findViewById(R.id.btnHoaDonDK);
-        btnHoaDonThang = findViewById(R.id.btnHoaDonThang);
+
         btnKhachHang = findViewById(R.id.btnKhachHang);
         btnKhuyenMai = findViewById(R.id.btnKhuyenMai);
-        btnLanTruyCap = findViewById(R.id.btnLanTruyCap);
-        btnTaiKhoan = findViewById(R.id.btnTaiKhoan);
+        btnDemo= findViewById(R.id.btn_Demo);
         btnTinhTrang = findViewById(R.id.btnTinhTrang);
 
         Explode explode = new Explode();
@@ -54,38 +52,26 @@ public class LoginSuccessActivity extends AppCompatActivity {
             }
         });
 
-        btnTaiKhoan.setOnClickListener(new View.OnClickListener() {
+        btnDemo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginSuccessActivity.this, TaiKhoanActivity.class);
+                Intent intent = new Intent(LoginSuccessActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
 
-        btnLanTruyCap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginSuccessActivity.this, LanTruyCapActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
         btnKhuyenMai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginSuccessActivity.this, KhuyenMaiActivity.class);
+                Intent intent = new Intent(LoginSuccessActivity.this, QuanLyKhuyenMai.class);
                 startActivity(intent);
             }
         });
 
 
-        btnHoaDonDK.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginSuccessActivity.this, HoaDonDKActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
         btnKhachHang.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,13 +81,6 @@ public class LoginSuccessActivity extends AppCompatActivity {
             }
         });
 
-        btnHoaDonThang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginSuccessActivity.this, HoaDonThangActivity.class);
-                startActivity(intent);
-            }
-        });
 
 
 

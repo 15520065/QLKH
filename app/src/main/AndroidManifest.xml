@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".materiallogin.Activity.MainActivity">
+        <activity android:name=".materiallogin.Activity.LoginSuccessActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +24,7 @@
         <activity
             android:name=".materiallogin.Activity.RegisterActivity"
             android:theme="@style/Translucent" />
-        <activity android:name=".materiallogin.Activity.LoginSuccessActivity" />
+        <activity android:name=".materiallogin.Activity.MainActivity" />
         <activity android:name=".materiallogin.Activity.GoiCuocActivity" />
         <activity android:name=".materiallogin.Activity.HoaDonDKActivity" />
         <activity android:name=".materiallogin.Activity.HoaDonThangActivity" />
@@ -40,6 +40,9 @@
         <activity android:name=".materiallogin.Activity.ThamSo" />
         <activity android:name=".materiallogin.Activity.InHoaDonDK" />
         <activity android:name=".materiallogin.Activity.UpdateGoiCuoc" />
+        <activity android:name=".materiallogin.Activity.QuanLyGoiCuoc" />
+        <activity android:name=".materiallogin.Activity.QuanLyKhuyenMai" />
+        <activity android:name=".materiallogin.Activity.DemoKhachHang"></activity>
         <activity android:name=".materiallogin.Activity.QuanLyGoiCuoc" />
         <activity android:name=".materiallogin.Activity.QLTKActivity"></activity>
     </application>

@@ -24,18 +24,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnHoaDonDK"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Hoa Don DK"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnGoiCuoc" />
-
-    <Button
         android:id="@+id/btnKhachHang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -45,7 +33,7 @@
         android:text="Khach Hang"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnHoaDonDK" />
+        app:layout_constraintTop_toBottomOf="@+id/btnGoiCuoc" />
 
     <Button
         android:id="@+id/btnKhuyenMai"
@@ -55,30 +43,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Khuyen Mai"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnTaiKhoan" />
-
-    <Button
-        android:id="@+id/btnLanTruyCap"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Lan truy Cap"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnKhuyenMai" />
-
-    <Button
-        android:id="@+id/btnTaiKhoan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Tai Khoan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnKhachHang" />
@@ -93,17 +57,18 @@
         android:text="Tinh Trang"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLanTruyCap" />
+        app:layout_constraintTop_toBottomOf="@+id/btnKhuyenMai" />
 
     <Button
-        android:id="@+id/btnHoaDonThang"
+        android:id="@+id/btn_Demo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Hoa Don Thang"
+        android:text="Demo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnTinhTrang" />
+
 </android.support.constraint.ConstraintLayout>
