@@ -29,7 +29,7 @@
         android:layout_marginTop="4dp"
         android:text="Gói Cước"
         android:textSize="25sp"
-        android:background="#75e5f6"
+        android:background="#c875e5f6"
         android:textColor="#ffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +44,7 @@
         android:layout_marginTop="8dp"
         android:text="Khách Hàng"
         android:textColor="#ffff"
-        android:background="#5599ff"
+        android:background="#c75599ff"
 
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,7 +62,7 @@
         android:layout_marginTop="8dp"
         android:text="Khuyến Mãi"
         android:textColor="#ffff"
-        android:background="#75baf6"
+        android:background="#c875baf6"
 
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,7 +77,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:textColor="#ffff"
-        android:background="#7591f6"
+        android:background="#c87591f6"
 
         android:text="Tình trạng"
         android:textSize="25sp"
@@ -95,7 +95,7 @@
             android:layout_marginTop="8dp"
             android:text="Demo"
             android:textColor="#ffff"
-            android:background="#cb97ff"
+            android:background="#c8cb97ff"
 
             android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"

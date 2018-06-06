@@ -42,8 +42,11 @@
         <activity android:name=".materiallogin.Activity.UpdateGoiCuoc" />
         <activity android:name=".materiallogin.Activity.QuanLyGoiCuoc" />
         <activity android:name=".materiallogin.Activity.QuanLyKhuyenMai" />
-        <activity android:name=".materiallogin.Activity.DemoKhachHang" />
+        <activity android:name=".materiallogin.Activity.DemoKhachHang"></activity>
         <activity android:name=".materiallogin.Activity.QuanLyGoiCuoc" />
+        <activity android:name=".materiallogin.Activity.QLTKActivity" />
+        <activity android:name=".materiallogin.Activity.QuanLyTinhTrang" />
+        <activity android:name=".materiallogin.Activity.UpdateTinhTrang"></activity>
         <activity android:name=".materiallogin.Activity.QLTKActivity" />
         <activity android:name=".materiallogin.Activity.DemoTaiKhoanLoginedActivity"></activity>
     </application>

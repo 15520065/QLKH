@@ -125,6 +125,12 @@ public class InHoaDonDK extends AppCompatActivity {
         List<GoiCuoc> dsGoiCuoc = GoiCuoc.getDB(this);
         final List<TaiKhoan> dsTk = getDSTK();
 
+        for (TaiKhoan tk: dsTk
+             ) {
+            tk.setEmail("user"+tk.getMaKH()+tk.getMaTK()+"@buudien1890.com");
+
+        }
+
         TKAdapter adapter = new TKAdapter(dsTk, dsGoiCuoc);
 //        adapter.setOnItemChildClickListener((adapter1, view, position) -> {
 //            if (view.getId() == R.id.iv_menu) {

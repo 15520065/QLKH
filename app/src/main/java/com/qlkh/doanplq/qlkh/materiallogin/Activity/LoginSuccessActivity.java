@@ -47,7 +47,7 @@ public class LoginSuccessActivity extends AppCompatActivity {
         btnTinhTrang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginSuccessActivity.this, TinhTrangActivity.class);
+                Intent intent = new Intent(LoginSuccessActivity.this, QuanLyTinhTrang.class);
                 startActivity(intent);
             }
         });
