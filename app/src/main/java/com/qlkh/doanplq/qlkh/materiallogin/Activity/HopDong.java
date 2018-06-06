@@ -24,7 +24,7 @@ public class HopDong extends AppCompatActivity {
         setContentView(R.layout.activity_hop_dong);
 
         Intent intent = getIntent();
-        String maKH = intent.getStringExtra("MaKH");
+        final String maKH = intent.getStringExtra("MaKH");
         txtten = findViewById(R.id.txtten);
         txtcm = findViewById(R.id.txtcmnd);
         txtdiachi = findViewById(R.id.txtdiachi);
@@ -46,21 +46,21 @@ public class HopDong extends AppCompatActivity {
         String CMND = cursor.getString(2);
         String DiaChi = cursor.getString(3);
         String NgheNghiep = cursor.getString(4);
-        final String MaHD = cursor.getString(5);
-        String DiaChiCaiDat = cursor.getString(6);
-        String DiaChiGuiHopDong = cursor.getString(7);
-        String SDT = cursor.getString(8);
-        String SoLuongTK = cursor.getString(9);
+        final String MaHD = cursor.getString(6);
+        String DiaChiCaiDat = cursor.getString(7);
+        String DiaChiGuiHopDong = cursor.getString(8);
+        String SDT = cursor.getString(9);
+        String SoLuongTK = cursor.getString(10);
 
-        txtten.setText(TenKH);
-        txtcm.setText(CMND);
-        txtdiachi.setText(DiaChi);
-        txtnghe.setText(NgheNghiep);
-        txtdccai.setText(DiaChiCaiDat);
-        txtdcgui.setText(DiaChiGuiHopDong);
-        txtsdt.setText(SDT);
-        txtsl.setText(SoLuongTK);
-        txtMaHD.setText(MaHD);
+        txtten.setText("Tên: " + TenKH);
+        txtcm.setText("Số CMND: "+CMND);
+        txtdiachi.setText("Địa chỉ: "+DiaChi);
+        txtnghe.setText("Nghề nghiệp: "+NgheNghiep);
+        txtdccai.setText("Địa chỉ cài đặt: "+DiaChiCaiDat);
+        txtdcgui.setText("Địa chỉ gửi HD: "+DiaChiGuiHopDong);
+        txtsdt.setText("Số điện thoại: "+SDT);
+        txtsl.setText("Số lượng tài khoản: "+SoLuongTK);
+        txtMaHD.setText("Mã hợp đồng: "+MaHD);
 
 
         btnDongTien.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +68,7 @@ public class HopDong extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(HopDong.this, HoaDonDKActivity.class);
                 intent.putExtra("maHD", MaHD);
+                intent.putExtra("maKH", maKH);
                 startActivity(intent);
             }
         });

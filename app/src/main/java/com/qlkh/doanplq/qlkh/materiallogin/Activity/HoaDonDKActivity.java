@@ -13,6 +13,12 @@ import android.widget.TextView;
 import com.qlkh.doanplq.qlkh.R;
 import com.qlkh.doanplq.qlkh.materiallogin.Database.Database;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class HoaDonDKActivity extends AppCompatActivity {
     final String DATABASE_NAME = "QuanLyKhachHang.sqlite";
     SQLiteDatabase database;
@@ -26,29 +32,46 @@ public class HoaDonDKActivity extends AppCompatActivity {
         setContentView(R.layout.activity_hoa_don_dk);
         init();
 
+        et_CuocDK.setText("100000");
+
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        final String ngayBD = df.format(Calendar.getInstance().getTime());
+        final String ngayLap = df.format(Calendar.getInstance().getTime());
+
+
+
+
+
+
+        et_NgayBDSD.setText(ngayBD);
+        et_NgayLap.setText(ngayLap);
+
+
+
+
         Intent intent = getIntent();
         final String MaHD = intent.getStringExtra("maHD");
+        final String MaKH = intent.getStringExtra("maKH");
 
         btn_luu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String CuocDK = et_CuocDK.getText().toString();
-                String ngayBDSD = et_NgayBDSD.getText().toString();
-                String ngayLap = et_NgayLap.getText().toString();
+                String CuocDK = String.valueOf(et_CuocDK.getText());
 
                 ContentValues contentValues = new ContentValues();
-
-                contentValues.put("NgayBDSD", ngayBDSD);
-                contentValues.put("NgayLap", ngayLap);
-                contentValues.put("PhiDK", CuocDK);
+                contentValues.put("CuocDK", CuocDK);
+                contentValues.put("NgayBDSD", ngayBD);
+                contentValues.put("NgayLap",ngayLap);
                 contentValues.put("MaHopDongDK", MaHD);
+
 
                 database = Database.initDatabase(HoaDonDKActivity.this, DATABASE_NAME);
                 database.insert("HoaDonDK", null, contentValues);
 
 
-                Intent intent = new Intent(HoaDonDKActivity.this, LoginSuccessActivity.class);
-
+                Intent intent = new Intent(HoaDonDKActivity.this, InHoaDonDK.class);
+                intent.putExtra("maHD", MaHD);
+                intent.putExtra("maKH", MaKH);
                 startActivity(intent);
 
 
@@ -62,7 +85,6 @@ public class HoaDonDKActivity extends AppCompatActivity {
 
     private void init() {
 
-        et_MaHoaDonDK = findViewById(R.id.et_MaHoaDonDK);
         et_CuocDK = findViewById(R.id.et_CuocDK);
         et_NgayBDSD = findViewById(R.id.et_NgayBDSD);
         et_NgayLap = findViewById(R.id.et_NgayLap);

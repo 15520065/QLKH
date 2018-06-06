@@ -41,7 +41,7 @@ public class LoginSuccessActivity extends AppCompatActivity {
         btnGoiCuoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginSuccessActivity.this, GoiCuocActivity.class);
+                Intent intent = new Intent(LoginSuccessActivity.this, QuanLyGoiCuoc.class);
                 startActivity(intent);
             }
         });

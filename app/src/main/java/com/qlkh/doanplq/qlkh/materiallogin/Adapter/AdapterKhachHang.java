@@ -58,6 +58,8 @@ public class AdapterKhachHang extends BaseAdapter {
         TextView txtDiaChi = (TextView) row.findViewById(R.id.txtDiaChi);
         TextView txtNgheNghiep = (TextView) row.findViewById(R.id.txtNgheNghiep);
         TextView txtTenKH = (TextView) row.findViewById(R.id.txtTenKH);
+
+
         Button btnXoa = (Button) row.findViewById(R.id.btnXoa);
         Button btnSua = (Button) row.findViewById(R.id.btnSua);
         Button btnDK = (Button) row.findViewById(R.id.btnDKHD);

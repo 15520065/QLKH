@@ -49,7 +49,7 @@ public class KhachHangActivity extends AppCompatActivity {
 //                contentValues.put("SDT", SDT);
 //                contentValues.put("SoLuongTK", SoLuongTK);
                 database = Database.initDatabase(KhachHangActivity.this, DATABASE_NAME);
-                database.insert("KHACHHANG", null, contentValues);
+                database.insert("KhachHang", null, contentValues);
 
 
                 Intent intent = new Intent(KhachHangActivity.this, LoginSuccessActivity.class);
