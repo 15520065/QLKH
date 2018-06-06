@@ -17,7 +17,6 @@ import com.qlkh.doanplq.qlkh.materiallogin.Database.Database;
 public class KhachHangActivity extends AppCompatActivity {
     final String DATABASE_NAME = "QuanLyKhachHang.sqlite";
     SQLiteDatabase database;
-    TextView tv_MaKH,tv_TenKH,tv_CMND,tv_DiaChi,tv_NgheNghiep;
     EditText et_MaKH,et_TenKH,et_CMND,et_DiaChi,et_NgheNghiep;
     Button btn_luu,btn_huy;
     @Override
@@ -67,11 +66,6 @@ public class KhachHangActivity extends AppCompatActivity {
 
 
     private void init() {
-        tv_MaKH = findViewById(R.id.tv_MaKH);
-        tv_TenKH = findViewById(R.id.tv_TenKH);
-        tv_CMND = findViewById(R.id.tv_CMND);
-        tv_DiaChi = findViewById(R.id.tv_DiaChi);
-        tv_NgheNghiep = findViewById(R.id.tv_NgheNghiep);
 
         et_MaKH = findViewById(R.id.et_MaKH1);
         et_TenKH = findViewById(R.id.et_TenKH);

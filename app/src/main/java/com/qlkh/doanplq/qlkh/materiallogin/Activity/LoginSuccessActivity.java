@@ -73,7 +73,7 @@ public class LoginSuccessActivity extends AppCompatActivity {
         btnKhuyenMai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginSuccessActivity.this, KhuyenMaiActivity.class);
+                Intent intent = new Intent(LoginSuccessActivity.this, QuanLyKhuyenMai.class);
                 startActivity(intent);
             }
         });
