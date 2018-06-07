@@ -8,10 +8,13 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.qlkh.doanplq.qlkh.R;
 import com.qlkh.doanplq.qlkh.materiallogin.Database.Database;
 import com.qlkh.doanplq.qlkh.materiallogin.Table.GoiCuoc;
@@ -97,18 +100,11 @@ public class InHoaDonDK extends AppCompatActivity {
     }
 
     public List<TaiKhoan> getDSTK() {
-        List<GoiCuoc> dsGoiCuoc = GoiCuoc.getDB(this);
         List<TaiKhoan> dsTk = new LinkedList<>();
-
-        if (dsGoiCuoc.size() == 0) {
-            Toast.makeText(getApplicationContext(), "Chưa có gói cước mặc định!", Toast.LENGTH_LONG);
-            finish();
-        }
 
         for (int i = 0; i < soLuongTK; i++) {
             TaiKhoan taiKhoan = TaiKhoan.Builder.aTaiKhoan()
                     .setMaKH(maKH)
-                    .setMaGoiCuoc(dsGoiCuoc.get(0).MaGoiCuoc)
                     .setMatKhau("123456")
                     .build();
 
@@ -117,29 +113,25 @@ public class InHoaDonDK extends AppCompatActivity {
 
         TaiKhoan.insertDS(this,dsTk);
 
-        return TaiKhoan.getDB(this, "SELECT * FROM TaiKhoan WHERE MaKH = " + maKH );
+        return TaiKhoan.getDB(this, "SELECT * FROM TaiKhoan WHERE ifnull(Email, '') = '' AND MaKH = " + maKH );
     }
 
     private void refreshList() {
 
-        List<GoiCuoc> dsGoiCuoc = GoiCuoc.getDB(this);
+        final List<GoiCuoc> dsGoiCuoc = GoiCuoc.getDB(this);
         final List<TaiKhoan> dsTk = getDSTK();
 
-        for (TaiKhoan tk: dsTk
-             ) {
-            tk.setEmail("user"+tk.getMaKH()+tk.getMaTK()+"@buudien1890.com");
+
+        for (int i = 0; i < dsTk.size(); i++) {
+
+            dsTk.get(i).setEmail("user"+ dsTk.get(i).getMaKH()+ dsTk.get(i).getMaTK()+"@buudien1890.com");
 
         }
 
+
+
+
         TKAdapter adapter = new TKAdapter(dsTk, dsGoiCuoc);
-//        adapter.setOnItemChildClickListener((adapter1, view, position) -> {
-//            if (view.getId() == R.id.iv_menu) {
-//                showTopRightMenuItem(position, view);
-//            }
-//            if (view.getId() == R.id.btn_request_state) {
-//                btnRequestStateClick(position);
-//            }
-//        });
 
         rccv_tk.setAdapter(adapter);
 
@@ -148,7 +140,7 @@ public class InHoaDonDK extends AppCompatActivity {
             public void onClick(View v) {
                 TaiKhoan.updateDS(InHoaDonDK.this, dsTk);
 
-
+                // xuat hoa don
             }
         });
     }

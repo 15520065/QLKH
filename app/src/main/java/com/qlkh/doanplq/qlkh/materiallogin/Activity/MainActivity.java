@@ -47,20 +47,22 @@ public class MainActivity extends AppCompatActivity {
         bt_DangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                List<TaiKhoan> taiKhoanList = TaiKhoan.getDB(MainActivity.this, "SELECT * FROM TaiKhoan)");
+                List<TaiKhoan> taiKhoanList = TaiKhoan.getDB(MainActivity.this, "SELECT * FROM TaiKhoan");
 
+                boolean fail = true;
                 for (TaiKhoan taiKhoan :
                         taiKhoanList) {
                     if (et_Email.getText().toString().equals(taiKhoan.getEmail())
                             && et_MatKhau.getText().toString().equals(taiKhoan.getMatKhau())) {
 
-                        Intent i = new Intent(MainActivity.this,LoginSuccessActivity.class);
+                        Intent i = new Intent(MainActivity.this, DemoTaiKhoanLoginedActivity.class);
                         i.putExtra("taiKhoan", taiKhoan);
                         startActivity(i);
+                        fail = false;
                     }
-                    else {
-                        Toast.makeText(getApplicationContext(), "Sai Email hoặc mật khẩu!", Toast.LENGTH_SHORT).show();
-                    }
+                }
+                if (fail) {
+                    Toast.makeText(getApplicationContext(), "Sai Email hoặc mật khẩu!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -28,7 +28,6 @@ public class TaiKhoan implements Parcelable {
 
             ContentValues contentValues = new ContentValues();
             contentValues.put("MaKH", tk.getMaKH());
-            contentValues.put("MaGoiCuoc", tk.getMaGoiCuoc());
             contentValues.put("MatKhau", tk.getMatKhau());
 
             database.insert("TaiKhoan", null, contentValues);
@@ -45,7 +44,16 @@ public class TaiKhoan implements Parcelable {
             contentValues.put("Email", tk.getEmail());
             contentValues.put("MatKhau", tk.getMatKhau());
 
-            database.update("TaiKhoan", contentValues, "MaTK = ?", new String[]{tk.getMaKH() + ""});
+            database.update("TaiKhoan", contentValues, "MaTK = ?", new String[]{tk.getMaTK() + ""});
+
+
+        }
+    }
+
+    public static void deleteDS(Activity activity, List<TaiKhoan> dsTK) {
+        for (TaiKhoan tk : dsTK) {
+            SQLiteDatabase database = Database.initDatabase(activity,DATABASE_NAME );
+            database.delete("TaiKhoan", "MaTK = ?", new String[]{tk.getMaTK() + ""});
 
         }
     }
@@ -61,10 +69,10 @@ public class TaiKhoan implements Parcelable {
         {
             cursor.moveToPosition(i);
             int MaTK = cursor.getInt(0);
-            int MaKH = cursor.getInt(1);
-            int MaGoiCuoc = cursor.getInt(2);
-            String Email = cursor.getString(3);
-            String MatKhau = cursor.getString(4);
+            String Email = cursor.getString(1);
+            String MatKhau = cursor.getString(2);
+            int MaKH = cursor.getInt(3);
+            int MaGoiCuoc = cursor.getInt(4);
 
             list.add(new TaiKhoan(MaTK, MaKH, MaGoiCuoc, Email, MatKhau));
         }
