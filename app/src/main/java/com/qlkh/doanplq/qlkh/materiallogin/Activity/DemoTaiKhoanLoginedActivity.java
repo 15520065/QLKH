@@ -155,8 +155,8 @@ public class DemoTaiKhoanLoginedActivity extends AppCompatActivity {
 
 
                 // dùng code này lấy ds, chứ k coi đc trên sqlite
-                List<LanTruyCap> dsLanTruyCapCuaTK = LanTruyCap.getDB(DemoTaiKhoanLoginedActivity.this, "SELECT * FROM LanTruyCap WHERE MaTK = " + maTK);
-                dsLanTruyCapCuaTK.size();
+//                List<LanTruyCap> dsLanTruyCapCuaTK = LanTruyCap.getDB(DemoTaiKhoanLoginedActivity.this, "SELECT * FROM LanTruyCap WHERE MaTK = " + maTK);
+//                dsLanTruyCapCuaTK.size();
             }
         };
 
