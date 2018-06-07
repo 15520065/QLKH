@@ -16,7 +16,7 @@ import com.qlkh.doanplq.qlkh.materiallogin.Table.KhachHang;
 
 public class LoginSuccessActivity extends AppCompatActivity {
 
-    Button btnGoiCuoc, btnKhachHang, btnKhuyenMai, btnTinhTrang, btnDemo;
+    Button btnGoiCuoc, btnKhachHang, btnKhuyenMai, btnTinhTrang, btnDemo, btnBaoCao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,7 @@ public class LoginSuccessActivity extends AppCompatActivity {
         btnKhuyenMai = findViewById(R.id.btnKhuyenMai);
         btnDemo= findViewById(R.id.btn_Demo);
         btnTinhTrang = findViewById(R.id.btnTinhTrang);
+        btnBaoCao = findViewById(R.id.btnBaoCao);
 
         Explode explode = new Explode();
         explode.setDuration(500);
@@ -82,7 +83,13 @@ public class LoginSuccessActivity extends AppCompatActivity {
         });
 
 
-
+        btnBaoCao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginSuccessActivity.this, BaoCaoActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
 
