@@ -46,8 +46,7 @@ public class BaoCaoActivity extends AppCompatActivity {
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Float tong;
-                tong = Float.valueOf(0);
+                Float tong = 0f;
 
                 int thang = Integer.parseInt(ed_Thang.getText().toString());
 
@@ -70,7 +69,7 @@ public class BaoCaoActivity extends AppCompatActivity {
                 List<LanTruyCap> list = LanTruyCap.getDB(BaoCaoActivity.this, "Select * FROM LanTruyCap");
 
                 Calendar calendar = Calendar.getInstance();
-                calendar.set(Integer.parseInt(et_Nam.getText().toString()),thang,1);
+                calendar.set(Integer.parseInt(et_Nam.getText().toString()),thang - 1,1);
                 Date checkMonth = calendar.getTime();
 
                 List<LanTruyCap> filterList = new LinkedList<>();
@@ -79,6 +78,10 @@ public class BaoCaoActivity extends AppCompatActivity {
                 for (LanTruyCap lanTruyCap : list) {
                     Date start = lanTruyCap.getThoiGianBD();
                     Date end = lanTruyCap.getThoiGianKT();
+
+                    if (start == null || end == null) {
+                        continue;
+                    }
 
                     int timeInMonth = between(checkMonth, start, end);
                     if (timeInMonth != -1) {
@@ -135,8 +138,12 @@ public class BaoCaoActivity extends AppCompatActivity {
         int monthStart = TimeUtils.getMonthFromDate(dateStart);
         int monthEnd = TimeUtils.getMonthFromDate(dateEnd);
 
-        if (date.before(dateStart) && TimeUtils.getYearFromDate(date) == TimeUtils.getYearFromDate(dateStart)) {
-            if (monthDate == monthStart) {
+        int yearDate = TimeUtils.getYearFromDate(date);
+        int yearStart = TimeUtils.getYearFromDate(dateStart);
+        int yearEnd = TimeUtils.getYearFromDate(dateEnd);
+
+        if (date.before(dateStart) && yearDate == yearStart) {
+            if (monthDate == monthStart ) {
                 if (monthEnd == monthStart) {
                     return GetTotalDay(dateStart, dateEnd);
                 } else {

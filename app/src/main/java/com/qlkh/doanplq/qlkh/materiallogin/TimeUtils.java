@@ -141,12 +141,12 @@ public class TimeUtils {
     public static int getMonthFromDate(Date date) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
-        return cal.get(Calendar.MONTH);
+        return cal.get(Calendar.MONTH)+ 1;
     }
 
     public static int getYearFromDate(Date date) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
-        return cal.get(Calendar.MONTH);
+        return cal.get(Calendar.YEAR);
     }
 }
